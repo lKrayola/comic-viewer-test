@@ -17,6 +17,7 @@ export default function Home() {
   const [chatperPages, setChapterPages] = useState([]);
 
   const fetchData = async () => {
+    let pagesSourceList = [];
     try {
       const chapterId = new URLSearchParams({ id: "juc245vegaemm49" });
 
@@ -24,9 +25,10 @@ export default function Home() {
         `/api/chapters/view?${chapterId.toString()}`
       );
 
-      const pagesSourceList: [] = response.data.record.expand.pages.map(
-        (page: any) => page.source
-      );
+      if (response.data.record.expand.pages)
+        pagesSourceList = response.data.record.expand.pages.map(
+          (page: any) => page.source
+        );
       setChapterPages(pagesSourceList);
     } catch (err: any) {
       console.warn(err.response.data.code, err.response.data.message);
