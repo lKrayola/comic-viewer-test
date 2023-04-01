@@ -11,7 +11,9 @@ const DynamicComicViewer = dynamic(() => import("react-comic-viewer"), {
   ssr: false,
 });
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
+
+const comicChapterId = "juc245vegaemm49";
 
 export default function Home() {
   const [chatperPages, setChapterPages] = useState([]);
@@ -19,7 +21,7 @@ export default function Home() {
   const fetchData = async () => {
     let pagesSourceList = [];
     try {
-      const chapterId = new URLSearchParams({ id: "juc245vegaemm49" });
+      const chapterId = new URLSearchParams({ id: comicChapterId });
 
       const response = await axios.get(
         `/api/chapters/view?${chapterId.toString()}`

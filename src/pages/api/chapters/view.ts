@@ -10,10 +10,10 @@ export default async function handler(
 
   const pb = new PocketBase(process.env.POCKETBASE_API_URL);
 
-  const authData = await pb.admins.authWithPassword(
-    `${process.env.POCKETBASE_ADMIN_EMAIL}`,
-    `${process.env.POCKETBASE_ADMIN_PASSWORD}`
-  );
+  // const authData = await pb.admins.authWithPassword(
+  //   `${process.env.POCKETBASE_ADMIN_EMAIL}`,
+  //   `${process.env.POCKETBASE_ADMIN_PASSWORD}`
+  // );
   // after the above you can also access the auth data from the authStore
   // console.log(pb.authStore.isValid);
   // console.log(pb.authStore.token);
