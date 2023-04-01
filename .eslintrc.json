@@ -1,3 +1,75 @@
 {
-  "extends": "next/core-web-vitals"
+  "plugins": ["prettier", "@typescript-eslint"],
+  "extends": ["next/core-web-vitals", "prettier"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json",
+    "sourceType": "module",
+    "createDefaultProgram": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": ["node_modules", "src/"]
+      },
+      "typescript": {
+        "alwaysTryTypes": true
+      }
+    }
+  },
+  "rules": {
+    "react/display-name": "off",
+    "@next/next/no-img-element": "off",
+    "react/no-unescaped-entities": "off",
+    "react/jsx-pascal-case": "warn",
+    "react/jsx-closing-tag-location": "warn",
+    "react/jsx-closing-bracket-location": "warn",
+    "react/self-closing-comp": "warn",
+    "react/jsx-wrap-multilines": "warn",
+    "react/jsx-tag-spacing": "warn",
+    "react/jsx-boolean-value": "warn",
+    "jsx-a11y/no-access-key": "error",
+    "jsx-a11y/img-redundant-alt": "warn",
+    "import/no-anonymous-default-export": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    // "@typescript-eslint/no-explicit-any": "error",
+    // add new line above comment
+    "no-multi-spaces": "warn",
+    "lines-around-comment": [
+      "warn",
+      {
+        "beforeLineComment": true,
+        "beforeBlockComment": true,
+        "allowBlockStart": true,
+        "allowClassStart": true,
+        "allowObjectStart": true,
+        "allowArrayStart": true
+      }
+    ],
+    // add new line above return
+    "newline-before-return": "error",
+    // add new line below import
+    "import/newline-after-import": [
+      "error",
+      {
+        "count": 1
+      }
+    ],
+    "no-console": "warn",
+    "no-debugger": "warn",
+    "no-unused-vars": "error",
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        "extendDefaults": true,
+        "types": {
+          "{}": false
+        }
+      }
+    ],
+    "semi": [2, "never"]
+  }
 }
