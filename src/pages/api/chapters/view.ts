@@ -29,9 +29,11 @@ export default async function handler(
     // debugger;
 
     return res.status(200).json({ record });
-  } catch (err) {
+  } catch (err: any) {
     console.log(err);
 
-    return res.status(500).json({ message: "Internal server error" });
+    return res
+      .status(err.response.status || 500)
+      .json({ message: err.response.message, code: err.response.code });
   }
 }

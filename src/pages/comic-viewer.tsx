@@ -17,16 +17,20 @@ export default function Home() {
   const [chatperPages, setChapterPages] = useState([]);
 
   const fetchData = async () => {
-    const chapterId = new URLSearchParams({ id: "juc245vegaemm49" });
+    try {
+      const chapterId = new URLSearchParams({ id: "juc245vegaemm49" });
 
-    const response = await axios.get(
-      `/api/chapters/view?${chapterId.toString()}`
-    );
+      const response = await axios.get(
+        `/api/chapters/view?${chapterId.toString()}`
+      );
 
-    const pagesSourceList: [] = response.data.record.expand.pages.map(
-      (page: any) => page.source
-    );
-    setChapterPages(pagesSourceList);
+      const pagesSourceList: [] = response.data.record.expand.pages.map(
+        (page: any) => page.source
+      );
+      setChapterPages(pagesSourceList);
+    } catch (err: any) {
+      console.warn(err.response.data.code, err.response.data.message);
+    }
   };
 
   useEffect(() => {
